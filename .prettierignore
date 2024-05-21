@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+.history
+dist
+coverage
+public

@@ -32,7 +32,7 @@ export default defineConfig({
             relative("lib", file.slice(0, file.length - extname(file).length)),
             // The absolute path to the entry file - lib/nested/foo.ts becomes /project/lib/nested/foo.ts
             fileURLToPath(new URL(file, import.meta.url)),
-          ])
+          ]),
       ),
       output: {
         assetFileNames: "assets/[name][extname]",
