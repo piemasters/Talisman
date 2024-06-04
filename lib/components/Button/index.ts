@@ -1,4 +1,4 @@
 export { Button as UnstyledButton } from "./Button";
-export { StyledButton as Button } from "./ButtonStyled";
-export * as Settings from "./settings";
-export { Styles, Variants } from "./styles";
+export { ButtonStyled as Button } from "./ButtonStyled";
+export * as ButtonSettings from "./settings";
+export { Styles as ButtonStyles, Variants as ButtonVariants } from "./styles";

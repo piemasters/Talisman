@@ -14,7 +14,7 @@ export type ButtonStyledProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Settings.Variant;
 };
 
-export const StyledButton = forwardRef<HTMLButtonElement, ButtonStyledProps>(
+export const ButtonStyled = forwardRef<HTMLButtonElement, ButtonStyledProps>(
   (
     {
       children,

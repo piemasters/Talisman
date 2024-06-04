@@ -1,12 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect } from "@storybook/test";
+import { cn } from "../../util/cn";
 import { Styles } from "./styles";
 import { Button } from "./Button";
-import { cn } from "../../util/cn";
 
 const meta = {
   title: "Buttons",
   component: Button,
+  parameters: {
+    layout: "fullscreen",
+  },
   decorators: [
     (Story) => (
       <div className="h-full bg-white dark:bg-gray-900">

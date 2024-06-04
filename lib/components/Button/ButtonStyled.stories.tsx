@@ -2,11 +2,25 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect } from "@storybook/test";
 import { CheckCircleIcon, PlusIcon } from "@heroicons/react/20/solid";
 import * as Settings from "./settings";
-import { StyledButton as Button } from "./ButtonStyled";
+import { ButtonStyled as Button } from "./ButtonStyled";
 
 const meta = {
   title: "Buttons",
   component: Button,
+  parameters: {
+    layout: "fullscreen",
+  },
+  decorators: [
+    (Story) => (
+      <div className="h-full bg-white dark:bg-gray-900">
+        <div className="px-4 py-8">
+          <div className="flex flex-col items-center justify-start max-w-3xl mx-auto space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0">
+            <Story />
+          </div>
+        </div>
+      </div>
+    ),
+  ],
   argTypes: {
     circular: {
       control: "boolean",
@@ -37,17 +51,6 @@ const meta = {
     size: Settings.Size.MD,
     variant: Settings.Variant.Primary,
   },
-  decorators: [
-    (Story) => (
-      <div className="h-full bg-white dark:bg-gray-900">
-        <div className="px-4 py-8">
-          <div className="flex flex-col items-center justify-start max-w-3xl mx-auto space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0">
-            <Story />
-          </div>
-        </div>
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Button>;
 
 export default meta;
