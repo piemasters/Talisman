@@ -259,3 +259,24 @@ export const IconTrailing: Story = {
     </>
   ),
 };
+
+export const IconsSurrounding: Story = {
+  args: {},
+  render: ({ children, ...args }) => (
+    <>
+      <Button {...args} size={Settings.Size.MD}>
+        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+        {children}
+      </Button>
+      <Button {...args} size={Settings.Size.MD}>
+        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+        {children}
+        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+      </Button>
+      <Button {...args} size={Settings.Size.MD}>
+        {children}
+        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+      </Button>
+    </>
+  ),
+};
