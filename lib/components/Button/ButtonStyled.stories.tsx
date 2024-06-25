@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, expect } from "@storybook/test";
+import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
 import { CheckCircleIcon, PlusIcon } from "@heroicons/react/20/solid";
+
 import * as Settings from "./settings";
 import { ButtonStyled as Button } from "./ButtonStyled";
 
@@ -22,15 +23,16 @@ const meta = {
     ),
   ],
   argTypes: {
-    circular: {
-      control: "boolean",
-    },
     children: {
       control: "text",
+    },
+    circular: {
+      control: "boolean",
     },
     disabled: {
       control: "boolean",
     },
+    onClick: { action: "clicked" },
     rounded: {
       control: "boolean",
     },
@@ -44,9 +46,10 @@ const meta = {
     },
   },
   args: {
-    circular: false,
     children: "Button Text",
+    circular: false,
     disabled: false,
+    onClick: fn(),
     rounded: false,
     size: Settings.Size.MD,
     variant: Settings.Variant.Primary,
@@ -58,10 +61,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Styled: Story = {
   args: {},
-  play: async ({ canvasElement }) => {
+  play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole("button")).toBeInTheDocument();
     await userEvent.click(canvas.getByRole("button"));
+    await waitFor(() => expect(args.onClick).toHaveBeenCalled());
   },
   render: ({ children, ...args }) => (
     <>

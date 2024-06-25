@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, expect } from "@storybook/test";
+import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
+
 import { cn } from "../../util/cn";
 import { Styles } from "./styles";
 import { Button } from "./Button";
@@ -31,14 +32,17 @@ export const Unstyled: Story = {
     children: {
       control: "text",
     },
+    onClick: { action: "clicked" },
   },
   args: {
     children: "Button Text",
+    onClick: fn(),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole("button")).toBeInTheDocument();
     await userEvent.click(canvas.getByRole("button"));
+    await waitFor(() => expect(args.onClick).toHaveBeenCalled());
   },
   render: ({ children, ...args }) => (
     <>
@@ -55,6 +59,7 @@ export const Custom: Story = {
   },
   args: {
     children: "Button Text",
+    onClick: fn(),
   },
   render: ({ children, ...args }) => (
     <>

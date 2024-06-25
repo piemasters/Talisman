@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, expect } from "@storybook/test";
+import { expect, fn, userEvent, within } from "@storybook/test";
+
 import { ButtonGroup } from "./ButtonGroup";
 import { UnstyledButton as Button } from "../Button";
 
@@ -8,6 +9,7 @@ const meta = {
   component: ButtonGroup,
   parameters: {
     layout: "fullscreen",
+    actions: { argTypesRegex: "^on.*" },
   },
   decorators: [
     (Story) => (
@@ -32,16 +34,16 @@ export const Unstyled: Story = {
   args: {
     children: (
       <>
-        <Button>Years</Button>
-        <Button>Months</Button>
-        <Button>Days</Button>
+        <Button onClick={fn()}>Years</Button>
+        <Button onClick={fn()}>Months</Button>
+        <Button onClick={fn()}>Days</Button>
       </>
     ),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole("button")).toBeInTheDocument();
-    await userEvent.click(canvas.getByRole("button"));
+    await expect(canvas.getAllByRole("button")).toHaveLength(3);
+    await userEvent.click(canvas.getAllByRole("button")[0]);
   },
   render: ({ children, ...args }) => (
     <>

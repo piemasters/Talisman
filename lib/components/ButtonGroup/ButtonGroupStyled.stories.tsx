@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, expect } from "@storybook/test";
-import { ButtonGroupStyled as ButtonGroup } from "./ButtonGroupStyled";
-import * as Settings from "./settings";
-import { Button, ButtonSettings } from "../Button";
+import { fn, expect, userEvent, within } from "@storybook/test";
 import {
   BookmarkIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "@heroicons/react/20/solid";
+
+import { ButtonGroupStyled as ButtonGroup } from "./ButtonGroupStyled";
+import * as Settings from "./settings";
+import { Button, ButtonSettings } from "../Button";
 
 type ButtonGroupAndButtonsArgs = React.ComponentProps<typeof ButtonGroup> & {
   size: Settings.Size;
@@ -52,23 +53,22 @@ export const Styled: Story = {
   args: {
     size: ButtonSettings.Size.MD,
     variant: ButtonSettings.Variant.Secondary,
-    // children: ()
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole("button")).toBeInTheDocument();
-    await userEvent.click(canvas.getByRole("button"));
+    await expect(canvas.getAllByRole("button")).toHaveLength(3);
+    await userEvent.click(canvas.getAllByRole("button")[0]);
   },
   render: ({ size, variant, ...args }) => (
     <>
       <ButtonGroup {...args}>
-        <Button variant={variant} size={size}>
+        <Button onClick={fn()} variant={variant} size={size}>
           Years
         </Button>
-        <Button variant={variant} size={size}>
+        <Button onClick={fn()} variant={variant} size={size}>
           Months
         </Button>
-        <Button variant={variant} size={size}>
+        <Button onClick={fn()} variant={variant} size={size}>
           Days
         </Button>
       </ButtonGroup>
@@ -97,11 +97,21 @@ export const IconOnly: Story = {
   render: ({ size, variant, ...args }) => (
     <>
       <ButtonGroup {...args}>
-        <Button variant={variant} size={size} className="text-gray-400">
+        <Button
+          onClick={fn()}
+          variant={variant}
+          size={size}
+          className="text-gray-400"
+        >
           <span className="sr-only">Previous</span>
           <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
         </Button>
-        <Button variant={variant} size={size} className="text-gray-400">
+        <Button
+          onClick={fn()}
+          variant={variant}
+          size={size}
+          className="text-gray-400"
+        >
           <span className="sr-only">Next</span>
           <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
         </Button>
@@ -131,14 +141,24 @@ export const Stat: Story = {
   render: ({ size, variant, ...args }) => (
     <>
       <ButtonGroup {...args}>
-        <Button variant={variant} size={size} className="font-semibold">
+        <Button
+          onClick={fn()}
+          variant={variant}
+          size={size}
+          className="font-semibold"
+        >
           <BookmarkIcon
             className="-ml-0.5 h-5 w-5 text-gray-400"
             aria-hidden="true"
           />
           Bookmark
         </Button>
-        <Button variant={variant} size={size} className="font-semibold">
+        <Button
+          onClick={fn()}
+          variant={variant}
+          size={size}
+          className="font-semibold"
+        >
           12k
         </Button>
       </ButtonGroup>
