@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
 
 import { cn } from "../../util/cn";
-import { Styles } from "./styles";
 import { Button } from "./Button";
 
 const meta = {
@@ -65,10 +64,12 @@ export const Custom: Story = {
     <>
       <Button
         className={cn(
-          Styles.Core.Base,
-          Styles.Core.Disabled,
-          Styles.Size.MD,
-          "text-white bg-red-600 hover:bg-red-500 focus-visible:outline-red-600",
+          "inline-flex items-center justify-center relative isolate shadow-sm gap-x-2 px-3 py-2 rounded-lg text-sm ring-inset",
+          "text-white bg-blue-500 ring-blue-300",
+          "hover:bg-blue-600",
+          "active:bg-blue-700",
+          "focus:ring-2",
+          "disabled:bg-gray-200 disabled:text-gray-500",
         )}
         {...args}
       >

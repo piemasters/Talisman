@@ -4,9 +4,7 @@ const CoreStyles = {
   Base: [
     "inline-flex items-center justify-center relative isolate shadow-sm gap-x-2",
   ],
-  Disabled: [
-    "disabled:opacity-50 before:disabled:shadow-none after:disabled:shadow-none",
-  ],
+  Disabled: ["disabled:opacity-50"],
 };
 
 const SizeStyles = {
@@ -35,8 +33,10 @@ const RoundedStyles = {
 
 const ColorStyles = {
   Primary: [
-    "text-white bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600",
-    "dark:text-white dark:bg-indigo-500 hover:dark:bg-indigo-400 focus-visible:dark:outline-indigo-500",
+    "text-white dark:text-white bg-indigo-600 dark:bg-indigo-500",
+    "hover:bg-indigo-500 hover:dark:bg-indigo-400",
+    "active:bg-indigo-400 active:dark:bg-indigo-300",
+    "ring-indigo-600 dark:ring-indigo-500",
   ],
   Secondary: [
     "text-gray-900 bg-white hover:bg-gray-50 ring-gray-300",
@@ -51,9 +51,9 @@ const ColorStyles = {
 const VariantStyles = {
   Primary: [
     "font-semibold",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   ],
-  Secondary: ["font-normal ring-1 ring-inset"],
+  Secondary: ["font-normal ring-1"],
   Soft: ["font-semibold"],
 };
 

@@ -22,8 +22,8 @@ export const ButtonStyled = forwardRef<HTMLButtonElement, ButtonStyledProps>(
       className,
       disabled = false,
       rounded = false,
-      size = Settings.Size.MD,
-      variant = Settings.Variant.Primary,
+      size = "MD",
+      variant = "Primary",
       ...rest
     },
     ref,
