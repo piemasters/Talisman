@@ -8,7 +8,7 @@ import {
 
 import { ButtonGroupStyled as ButtonGroup } from "./ButtonGroupStyled";
 import * as Settings from "./settings";
-import { Button, ButtonSettings } from "../Button";
+import { Button } from "../Button";
 
 type ButtonGroupAndButtonsArgs = React.ComponentProps<typeof ButtonGroup> & {
   size: Settings.Size;
@@ -43,16 +43,16 @@ export const Styled: Story = {
     },
     size: {
       control: "select",
-      options: Object.values(Settings.Size),
+      options: Object.values(Settings.SizeArray),
     },
     variant: {
       control: "select",
-      options: Object.values(Settings.Variant),
+      options: Object.values(Settings.VariantArray),
     },
   },
   args: {
-    size: ButtonSettings.Size.MD,
-    variant: ButtonSettings.Variant.Secondary,
+    size: "MD",
+    variant: "Secondary",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -83,16 +83,16 @@ export const IconOnly: Story = {
     },
     size: {
       control: "select",
-      options: Object.values(Settings.Size),
+      options: Object.values(Settings.SizeArray),
     },
     variant: {
       control: "select",
-      options: Object.values(Settings.Variant),
+      options: Object.values(Settings.VariantArray),
     },
   },
   args: {
-    size: ButtonSettings.Size.MD,
-    variant: ButtonSettings.Variant.Secondary,
+    size: "MD",
+    variant: "Secondary",
   },
   render: ({ size, variant, ...args }) => (
     <>
@@ -127,16 +127,16 @@ export const Stat: Story = {
     },
     size: {
       control: "select",
-      options: Object.values(Settings.Size),
+      options: Object.values(Settings.SizeArray),
     },
     variant: {
       control: "select",
-      options: Object.values(Settings.Variant),
+      options: Object.values(Settings.VariantArray),
     },
   },
   args: {
-    size: ButtonSettings.Size.MD,
-    variant: ButtonSettings.Variant.Secondary,
+    size: "MD",
+    variant: "Secondary",
   },
   render: ({ size, variant, ...args }) => (
     <>
