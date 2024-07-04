@@ -1,14 +1,30 @@
 import { HTMLProps } from "react";
 import { ClipboardIcon } from "@heroicons/react/20/solid";
 
-export const CardWrapper = ({ children }: HTMLProps<HTMLDivElement>) => {
+export const StoryWrapper = ({ children }: HTMLProps<HTMLDivElement>) => {
+  return (
+    <div className="min-h-full bg-white dark:bg-gray-900">
+      <div className="px-4 py-8">{children}</div>
+    </div>
+  );
+};
+
+export const StoryCenter = ({ children }: HTMLProps<HTMLDivElement>) => {
+  return (
+    <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center">
+      {children}
+    </div>
+  );
+};
+
+export const StoryCard = ({ children }: HTMLProps<HTMLDivElement>) => {
   return (
     <div className="p-3 border border-gray-300 rounded shadow-lg dark:border-blue-900 dark:shadow-blue-900">
       <div>{children}</div>
     </div>
   );
 };
-export const CodeWrapper = ({
+export const StoryCodeBlock = ({
   text,
   copy = text,
 }: HTMLProps<HTMLDivElement> & { text: string; copy?: string }) => {
@@ -34,7 +50,7 @@ export const CodeWrapper = ({
   );
 };
 
-export const GroupWrapper = ({
+export const StoryCardGroup = ({
   children,
   title,
   description,
@@ -52,16 +68,6 @@ export const GroupWrapper = ({
         </div>
       )}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 2xl:grid-cols-6">
-        {children}
-      </div>
-    </>
-  );
-};
-
-export const VariantWrapper = ({ children }: HTMLProps<HTMLDivElement>) => {
-  return (
-    <>
-      <div className="grid items-center max-w-3xl grid-cols-1 gap-4 mx-auto md:grid-cols-5 place-items-center">
         {children}
       </div>
     </>

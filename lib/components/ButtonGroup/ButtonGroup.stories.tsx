@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, within } from "@storybook/test";
 
+import { StoryWrapper } from "../../storybook";
+
 import { ButtonGroup } from "./ButtonGroup";
 import { UnstyledButton as Button } from "../Button";
 
 const meta = {
-  title: "ButtonGroup",
+  title: "Unstyled/ButtonGroup",
   component: ButtonGroup,
   parameters: {
     layout: "fullscreen",
@@ -13,11 +15,9 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="h-full bg-white dark:bg-gray-900">
-        <div className="flex items-center justify-center p-8">
-          <Story />
-        </div>
-      </div>
+      <StoryWrapper>
+        <Story />
+      </StoryWrapper>
     ),
   ],
 } satisfies Meta<typeof ButtonGroup>;

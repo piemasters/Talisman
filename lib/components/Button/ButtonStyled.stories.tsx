@@ -2,14 +2,16 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
 import { CheckCircleIcon, PlusIcon } from "@heroicons/react/20/solid";
 
+import {
+  StoryCard,
+  StoryCodeBlock,
+  StoryCardGroup,
+  StoryCenter,
+  StoryWrapper,
+} from "../../storybook";
+
 import * as Settings from "./settings";
 import { ButtonStyled as Button } from "./ButtonStyled";
-import {
-  CardWrapper,
-  CodeWrapper,
-  GroupWrapper,
-  VariantWrapper,
-} from "./StoryComponents";
 
 const meta = {
   title: "Buttons",
@@ -19,11 +21,9 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="min-h-full bg-white dark:bg-gray-900">
-        <div className="px-4 py-8">
-          <Story />
-        </div>
-      </div>
+      <StoryWrapper>
+        <Story />
+      </StoryWrapper>
     ),
   ],
   argTypes: {
@@ -63,7 +63,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Styled: Story = {
+export const Default: Story = {
   args: {},
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
@@ -74,10 +74,10 @@ export const Styled: Story = {
   render: ({ children, ...args }) => {
     const text = `<Button variant="${args.variant}" size="${args.size}"${args.circular ? " circular={true}" : ""}${args.rounded ? " rounded={true}" : ""}${args.disabled ? " disabled={true}" : ""}>${children}</Button>`;
     return (
-      <div className="flex flex-col items-center">
-        <CodeWrapper text={text} />
+      <StoryCenter>
+        <StoryCodeBlock text={text} />
         <Button {...args}>{children}</Button>
-      </div>
+      </StoryCenter>
     );
   },
 };
@@ -87,17 +87,15 @@ export const Primary: Story = {
     variant: "Primary",
   },
   render: ({ children, ...args }) => (
-    <>
-      <VariantWrapper>
-        {Object.values(Settings.SizeArray).map((size) => (
-          <div key={size}>
-            <Button {...args} size={size}>
-              {children}
-            </Button>
-          </div>
-        ))}
-      </VariantWrapper>
-    </>
+    <StoryCenter>
+      {Object.values(Settings.SizeArray).map((size) => (
+        <div key={size}>
+          <Button {...args} size={size}>
+            {children}
+          </Button>
+        </div>
+      ))}
+    </StoryCenter>
   ),
 };
 
@@ -106,17 +104,15 @@ export const Secondary: Story = {
     variant: "Secondary",
   },
   render: ({ children, ...args }) => (
-    <>
-      <VariantWrapper>
-        {Object.values(Settings.SizeArray).map((size) => (
-          <div key={size}>
-            <Button {...args} size={size}>
-              {children}
-            </Button>
-          </div>
-        ))}
-      </VariantWrapper>
-    </>
+    <StoryCenter>
+      {Object.values(Settings.SizeArray).map((size) => (
+        <div key={size}>
+          <Button {...args} size={size}>
+            {children}
+          </Button>
+        </div>
+      ))}
+    </StoryCenter>
   ),
 };
 
@@ -125,17 +121,15 @@ export const Soft: Story = {
     variant: "Soft",
   },
   render: ({ children, ...args }) => (
-    <>
-      <VariantWrapper>
-        {Object.values(Settings.SizeArray).map((size) => (
-          <div key={size}>
-            <Button {...args} size={size}>
-              {children}
-            </Button>
-          </div>
-        ))}
-      </VariantWrapper>
-    </>
+    <StoryCenter>
+      {Object.values(Settings.SizeArray).map((size) => (
+        <div key={size}>
+          <Button {...args} size={size}>
+            {children}
+          </Button>
+        </div>
+      ))}
+    </StoryCenter>
   ),
 };
 
@@ -144,17 +138,15 @@ export const Circular: Story = {
     circular: true,
   },
   render: ({ ...args }) => (
-    <>
-      <VariantWrapper>
-        {Object.values(Settings.SizeArray).map((size) => (
-          <div key={size}>
-            <Button {...args} size={size}>
-              <PlusIcon className="w-5 h-5" aria-hidden="true" />
-            </Button>
-          </div>
-        ))}
-      </VariantWrapper>
-    </>
+    <StoryCenter>
+      {Object.values(Settings.SizeArray).map((size) => (
+        <div key={size}>
+          <Button {...args} size={size}>
+            <PlusIcon className="w-5 h-5" aria-hidden="true" />
+          </Button>
+        </div>
+      ))}
+    </StoryCenter>
   ),
 };
 
@@ -163,24 +155,22 @@ export const Rounded: Story = {
     rounded: true,
   },
   render: ({ children, ...args }) => (
-    <>
-      <VariantWrapper>
-        {Object.values(Settings.SizeArray).map((size) => (
-          <div key={size}>
-            <Button {...args} size={size}>
-              {children}
-            </Button>
-          </div>
-        ))}
-      </VariantWrapper>
-    </>
+    <StoryCenter>
+      {Object.values(Settings.SizeArray).map((size) => (
+        <div key={size}>
+          <Button {...args} size={size}>
+            {children}
+          </Button>
+        </div>
+      ))}
+    </StoryCenter>
   ),
 };
 
 export const Icons: Story = {
   args: {},
   render: ({ children, ...args }) => (
-    <div className="grid items-center max-w-3xl grid-cols-1 gap-4 mx-auto md:grid-cols-3 place-items-center">
+    <StoryCenter>
       <Button {...args}>
         <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
         {children}
@@ -194,7 +184,7 @@ export const Icons: Story = {
         {children}
         <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
       </Button>
-    </div>
+    </StoryCenter>
   ),
 };
 
@@ -208,7 +198,7 @@ export const States: Story = {
     },
   },
   render: ({ children, ...args }) => (
-    <VariantWrapper>
+    <StoryCenter>
       <Button id="primary" {...args}>
         {children}
       </Button>
@@ -224,7 +214,7 @@ export const States: Story = {
       <Button id="primary" {...args} disabled={true}>
         {children}
       </Button>
-    </VariantWrapper>
+    </StoryCenter>
   ),
 };
 
@@ -242,133 +232,133 @@ export const All: Story = {
   },
   render: ({ children, ...args }) => (
     <>
-      <GroupWrapper
+      <StoryCardGroup
         title="States"
-        description="The different states of the button, only disabled can be set via a prop"
+        description="The different states of the button, only disabled can be set via a prop (requires a refresh when toggling variant)"
       >
         {[
           "default",
           "hover",
+          "active",
           "focus",
           "focus-visible",
-          "active",
           "disabled",
         ].map((state) => {
           const copy = `<Button variant="${args.variant}">${children}</Button>`;
           const copyDisabled = `<Button variant="${args.variant}" disabled={true}>${children}</Button>`;
           return (
-            <CardWrapper key={`states-${state}`}>
-              <CodeWrapper
+            <StoryCard key={`states-${state}`}>
+              <StoryCodeBlock
                 text={state === "disabled" ? "disabled={true}" : state}
                 copy={state === "disabled" ? copyDisabled : copy}
               />
               <Button {...args} id={state} disabled={state === "disabled"}>
                 {children}
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
-      <GroupWrapper
+      </StoryCardGroup>
+      <StoryCardGroup
         title="Sizes"
         description="The list of sizes is stored in the Settings object"
       >
         {Object.values(Settings.SizeArray).map((size) => {
           const copy = `<Button variant="${args.variant}" size="${size}">${children}</Button>`;
           return (
-            <CardWrapper key={`size-${size}`}>
-              <CodeWrapper text={`size="${size}"`} copy={copy} />
+            <StoryCard key={`size-${size}`}>
+              <StoryCodeBlock text={`size="${size}"`} copy={copy} />
               <Button {...args} size={size}>
                 {children}
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
-      <GroupWrapper
+      </StoryCardGroup>
+      <StoryCardGroup
         title="Rounded"
         description="Rounded buttons can be used with both text and icons as children"
       >
         {Object.values(Settings.SizeArray).map((size) => {
           const copy = `<Button variant="${args.variant}" size="${size}" rounded={true}>${children}</Button>`;
           return (
-            <CardWrapper key={`rounded-${size}`}>
-              <CodeWrapper text="rounded={true}" copy={copy} />
+            <StoryCard key={`rounded-${size}`}>
+              <StoryCodeBlock text="rounded={true}" copy={copy} />
               <Button {...args} rounded={true} size={size}>
                 {children}
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
-      <GroupWrapper
+      </StoryCardGroup>
+      <StoryCardGroup
         title="Circular"
         description="Circular buttons should only be used with a single icon as a child"
       >
         {Object.values(Settings.SizeArray).map((size) => {
           const copy = `<Button variant="${args.variant}" size="${size}" circular={true}><PlusIcon className="w-5 h-5" aria-hidden="true" /></Button>`;
           return (
-            <CardWrapper key={`circular-${size}`}>
-              <CodeWrapper text="circular={true}" copy={copy} />
+            <StoryCard key={`circular-${size}`}>
+              <StoryCodeBlock text="circular={true}" copy={copy} />
               <Button {...args} circular={true} size={size}>
                 <PlusIcon className="w-5 h-5" aria-hidden="true" />
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
-      <GroupWrapper
+      </StoryCardGroup>
+      <StoryCardGroup
         title="Icon Leading"
         description="Examples of a leading icon with each size button"
       >
         {Object.values(Settings.SizeArray).map((size) => {
           const copy = `<Button variant="${args.variant}" size="${size}"><CheckCircleIcon className="w-5 h-5" aria-hidden="true" />${children}</Button>`;
           return (
-            <CardWrapper key={`icon-leading-${size}`}>
-              <CodeWrapper text="icon-leading" copy={copy} />
+            <StoryCard key={`icon-leading-${size}`}>
+              <StoryCodeBlock text="icon-leading" copy={copy} />
               <Button {...args} size={size}>
                 <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
                 {children}
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
-      <GroupWrapper
+      </StoryCardGroup>
+      <StoryCardGroup
         title="Icon Trailing"
         description="Examples of a trailing icon with each size button"
       >
         {Object.values(Settings.SizeArray).map((size) => {
           const copy = `<Button variant="${args.variant}" size="${size}">${children}<CheckCircleIcon className="w-5 h-5" aria-hidden="true" /></Button>`;
           return (
-            <CardWrapper key={`icon-trailing-${size}`}>
-              <CodeWrapper text="icon-trailing" copy={copy} />
+            <StoryCard key={`icon-trailing-${size}`}>
+              <StoryCodeBlock text="icon-trailing" copy={copy} />
               <Button {...args} size={size}>
                 {children}
                 <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
-      <GroupWrapper
+      </StoryCardGroup>
+      <StoryCardGroup
         title="Icon Surrounding"
         description="Examples of a surrounding icons with each size button"
       >
         {Object.values(Settings.SizeArray).map((size) => {
           const copy = `<Button variant="${args.variant}" size="${size}"><CheckCircleIcon className="w-5 h-5" aria-hidden="true" />${children}<CheckCircleIcon className="w-5 h-5" aria-hidden="true" /></Button>`;
           return (
-            <CardWrapper key={`icon-surrounding-${size}`}>
-              <CodeWrapper text="icons-surrounding" copy={copy} />
+            <StoryCard key={`icon-surrounding-${size}`}>
+              <StoryCodeBlock text="icons-surrounding" copy={copy} />
               <Button {...args} size={size}>
                 <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
                 {children}
                 <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
               </Button>
-            </CardWrapper>
+            </StoryCard>
           );
         })}
-      </GroupWrapper>
+      </StoryCardGroup>
     </>
   ),
 };

@@ -2,23 +2,21 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
 
 import { cn } from "../../util/cn";
+import { StoryWrapper } from "../../storybook";
+
 import { Button } from "./Button";
 
 const meta = {
-  title: "Buttons",
+  title: "Unstyled/Buttons",
   component: Button,
   parameters: {
     layout: "fullscreen",
   },
   decorators: [
     (Story) => (
-      <div className="h-full bg-white dark:bg-gray-900">
-        <div className="px-4 py-8">
-          <div className="flex flex-col items-center justify-start max-w-3xl mx-auto space-y-4 sm:flex-row sm:items-end sm:justify-around sm:space-y-0">
-            <Story />
-          </div>
-        </div>
-      </div>
+      <StoryWrapper>
+        <Story />
+      </StoryWrapper>
     ),
   ],
 } satisfies Meta<typeof Button>;

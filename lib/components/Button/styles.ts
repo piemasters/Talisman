@@ -3,6 +3,7 @@ import { cn } from "../../util/cn";
 const CoreStyles = {
   Base: [
     "inline-flex items-center justify-center relative isolate shadow-sm gap-x-2",
+    "focus-visible:z-10",
   ],
   Disabled: ["disabled:opacity-50"],
 };
@@ -39,12 +40,16 @@ const ColorStyles = {
     "ring-indigo-600 dark:ring-indigo-500",
   ],
   Secondary: [
-    "text-gray-900 bg-white hover:bg-gray-50 ring-gray-300",
-    "dark:text-white dark: bg-white/10 hover:dark:bg-white/20",
+    "text-gray-900 dark:text-white bg-white dark: bg-white/10",
+    "hover:bg-gray-50 hover:dark:bg-white/20",
+    "active:bg-gray-100 active:dark:bg-white/30",
+    "ring-gray-300 dark:ring-gray-500 focus-visible:ring-gray-600 focus-visible:dark:ring-gray-300",
   ],
   Soft: [
-    "text-indigo-600 bg-indigo-50 hover:bg-indigo-100",
-    "dark:text-indigo-200 dark:bg-indigo-900 hover:dark:bg-indigo-800",
+    "text-indigo-600 dark:text-indigo-200 bg-indigo-50 dark:bg-indigo-900",
+    "hover:bg-indigo-100 hover:dark:bg-indigo-800",
+    "active:bg-indigo-200 active:dark:bg-indigo-700",
+    "ring-indigo-600 dark:ring-indigo-400",
   ],
 };
 
@@ -53,8 +58,11 @@ const VariantStyles = {
     "font-semibold",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   ],
-  Secondary: ["font-normal ring-1"],
-  Soft: ["font-semibold"],
+  Secondary: [
+    "font-normal",
+    "focus-visible:outline-none ring-1 focus-visible:ring-2 ring-inset",
+  ],
+  Soft: ["font-semibold", "focus-visible:outline-none focus-visible:ring-2"],
 };
 
 export const Styles = {
