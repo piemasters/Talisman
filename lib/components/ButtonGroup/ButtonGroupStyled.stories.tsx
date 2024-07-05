@@ -11,6 +11,7 @@ import {
   StoryCodeBlock,
   StoryCardGroup,
   StoryWrapper,
+  StoryCenter,
 } from "../../storybook";
 
 import { ButtonGroupStyled as ButtonGroup } from "./ButtonGroupStyled";
@@ -66,20 +67,22 @@ export const Default: Story = {
   },
   render: ({ size, variant, ...args }) => {
     return (
-      <div className="flex flex-col items-center">
-        <StoryCodeBlock text="<ButtonGroup></ButtonGroup>" />
-        <ButtonGroup {...args}>
-          <Button onClick={fn()} variant={variant} size={size}>
-            Days
-          </Button>
-          <Button onClick={fn()} variant={variant} size={size}>
-            Months
-          </Button>
-          <Button onClick={fn()} variant={variant} size={size}>
-            Years
-          </Button>
-        </ButtonGroup>
-      </div>
+      <StoryCenter>
+        <div className="flex flex-col items-center">
+          <StoryCodeBlock text="<ButtonGroup></ButtonGroup>" />
+          <ButtonGroup {...args}>
+            <Button onClick={fn()} variant={variant} size={size}>
+              Days
+            </Button>
+            <Button onClick={fn()} variant={variant} size={size}>
+              Months
+            </Button>
+            <Button onClick={fn()} variant={variant} size={size}>
+              Years
+            </Button>
+          </ButtonGroup>
+        </div>
+      </StoryCenter>
     );
   },
 };

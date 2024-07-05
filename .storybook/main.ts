@@ -13,6 +13,8 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
     "@chromatic-com/storybook",
+    "@storybook/addon-a11y",
+    "@storybook/addon-storysource",
   ],
 
   framework: {

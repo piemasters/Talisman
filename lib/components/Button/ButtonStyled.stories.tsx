@@ -75,8 +75,10 @@ export const Default: Story = {
     const text = `<Button variant="${args.variant}" size="${args.size}"${args.circular ? " circular={true}" : ""}${args.rounded ? " rounded={true}" : ""}${args.disabled ? " disabled={true}" : ""}>${children}</Button>`;
     return (
       <StoryCenter>
-        <StoryCodeBlock text={text} />
-        <Button {...args}>{children}</Button>
+        <div className="flex flex-col items-center">
+          <StoryCodeBlock text={text} />
+          <Button {...args}>{children}</Button>
+        </div>
       </StoryCenter>
     );
   },

@@ -30,6 +30,9 @@ export const Unstyled: Story = {
       control: "text",
     },
     onClick: { action: "clicked" },
+    disabled: {
+      control: "boolean",
+    },
   },
   args: {
     children: "Button Text",
