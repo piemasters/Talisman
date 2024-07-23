@@ -19,7 +19,7 @@ export const StoryCenter = ({ children }: HTMLProps<HTMLDivElement>) => {
 
 export const StoryCard = ({ children }: HTMLProps<HTMLDivElement>) => {
   return (
-    <div className="p-3 border border-gray-300 rounded shadow-lg dark:border-blue-900 dark:shadow-blue-900">
+    <div className="rounded border border-gray-300 p-3 shadow-lg dark:border-blue-900 dark:shadow-blue-900">
       <div>{children}</div>
     </div>
   );
@@ -30,9 +30,9 @@ export const StoryCodeBlock = ({
 }: HTMLProps<HTMLDivElement> & { text: string; copy?: string }) => {
   return (
     <>
-      <span className="flex items-center justify-between gap-1 px-2 py-1 mb-4 bg-blue-100 rounded cursor-pointer dark:bg-blue-900">
+      <span className="mb-4 flex cursor-pointer items-center justify-between gap-1 rounded bg-blue-100 px-2 py-1 dark:bg-blue-900">
         <code
-          className="overflow-hidden text-xs text-left text-blue-900 dark:text-blue-300 whitespace-nowrap overflow-ellipsis"
+          className="overflow-hidden overflow-ellipsis whitespace-nowrap text-left text-xs text-blue-900 dark:text-blue-300"
           onClick={() => {
             navigator.clipboard.writeText(text);
           }}
@@ -40,7 +40,7 @@ export const StoryCodeBlock = ({
           {text}
         </code>
         <ClipboardIcon
-          className="w-4 h-4 text-blue-900 dark:text-blue-300"
+          className="h-4 w-4 text-blue-900 dark:text-blue-300"
           onClick={() => {
             navigator.clipboard.writeText(copy);
           }}

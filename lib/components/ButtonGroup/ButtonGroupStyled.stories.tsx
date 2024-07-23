@@ -110,11 +110,11 @@ export const IconOnly: Story = {
       <ButtonGroup {...args}>
         <Button onClick={fn()} variant={variant} size={size}>
           <span className="sr-only">Previous</span>
-          <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
+          <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
         </Button>
         <Button onClick={fn()} variant={variant} size={size}>
           <span className="sr-only">Next</span>
-          <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+          <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
         </Button>
       </ButtonGroup>
     </div>
@@ -205,11 +205,11 @@ export const All: Story = {
             <ButtonGroup {...args}>
               <Button onClick={fn()} variant={args.variant} size={args.size}>
                 <span className="sr-only">Previous</span>
-                <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
+                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
               </Button>
               <Button onClick={fn()} variant={args.variant} size={args.size}>
                 <span className="sr-only">Next</span>
-                <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
               </Button>
             </ButtonGroup>
           </StoryCard>
@@ -222,7 +222,7 @@ export const All: Story = {
                 size={args.size}
                 className="font-semibold"
               >
-                <BookmarkIcon className="-ml-0.5 h-5 w-5 " aria-hidden="true" />
+                <BookmarkIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
                 Bookmark
               </Button>
               <Button

@@ -144,7 +144,7 @@ export const Circular: Story = {
       {Object.values(Settings.SizeArray).map((size) => (
         <div key={size}>
           <Button {...args} size={size}>
-            <PlusIcon className="w-5 h-5" aria-hidden="true" />
+            <PlusIcon className="h-5 w-5" aria-hidden="true" />
           </Button>
         </div>
       ))}
@@ -174,17 +174,17 @@ export const Icons: Story = {
   render: ({ children, ...args }) => (
     <StoryCenter>
       <Button {...args}>
-        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+        <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
         {children}
       </Button>
       <Button {...args}>
         {children}
-        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+        <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
       </Button>
       <Button {...args}>
-        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+        <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
         {children}
-        <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+        <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
       </Button>
     </StoryCenter>
   ),
@@ -303,7 +303,7 @@ export const All: Story = {
             <StoryCard key={`circular-${size}`}>
               <StoryCodeBlock text="circular={true}" copy={copy} />
               <Button {...args} circular={true} size={size}>
-                <PlusIcon className="w-5 h-5" aria-hidden="true" />
+                <PlusIcon className="h-5 w-5" aria-hidden="true" />
               </Button>
             </StoryCard>
           );
@@ -319,7 +319,7 @@ export const All: Story = {
             <StoryCard key={`icon-leading-${size}`}>
               <StoryCodeBlock text="icon-leading" copy={copy} />
               <Button {...args} size={size}>
-                <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+                <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
                 {children}
               </Button>
             </StoryCard>
@@ -337,7 +337,7 @@ export const All: Story = {
               <StoryCodeBlock text="icon-trailing" copy={copy} />
               <Button {...args} size={size}>
                 {children}
-                <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+                <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
               </Button>
             </StoryCard>
           );
@@ -353,9 +353,9 @@ export const All: Story = {
             <StoryCard key={`icon-surrounding-${size}`}>
               <StoryCodeBlock text="icons-surrounding" copy={copy} />
               <Button {...args} size={size}>
-                <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+                <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
                 {children}
-                <CheckCircleIcon className="w-5 h-5" aria-hidden="true" />
+                <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
               </Button>
             </StoryCard>
           );
