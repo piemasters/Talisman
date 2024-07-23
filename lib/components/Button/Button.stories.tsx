@@ -65,8 +65,8 @@ export const Custom: Story = {
     <>
       <Button
         className={cn(
-          "inline-flex items-center justify-center relative isolate shadow-sm gap-x-2 px-3 py-2 rounded-lg text-sm ring-inset",
-          "text-white bg-blue-500 ring-blue-300",
+          "relative isolate inline-flex items-center justify-center gap-x-2 rounded-lg px-3 py-2 text-sm shadow-sm ring-inset",
+          "bg-blue-500 text-white ring-blue-300",
           "hover:bg-blue-600",
           "active:bg-blue-700",
           "focus:ring-2",
