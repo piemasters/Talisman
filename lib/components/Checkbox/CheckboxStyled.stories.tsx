@@ -1,20 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn, expect, userEvent, within } from "@storybook/test";
-import { Checkbox } from "./Checkbox";
+import { CheckboxStyled as Checkbox } from "./CheckboxStyled";
+import { StoryWrapper } from "../../storybook";
 
 const meta = {
-  title: "Unstyled/Checkbox",
+  title: "Checkbox",
   component: Checkbox,
   parameters: {
     layout: "fullscreen",
   },
   decorators: [
     (Story) => (
-      <div className="h-full bg-white dark:bg-gray-900">
-        <div className="flex items-center justify-center p-8">
-          <Story />
-        </div>
-      </div>
+      <StoryWrapper>
+        <Story />
+      </StoryWrapper>
     ),
   ],
 } satisfies Meta<typeof Checkbox>;
@@ -22,13 +21,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Unstyled: Story = {
   argTypes: {
     children: {
       control: "text",
     },
+    indeterminate: {
+      control: "boolean",
+    },
+    onChange: {
+      control: "text",
+    },
   },
-  args: { onCheckedChange: fn() },
+  args: {
+    onChange: fn(),
+    indeterminate: false,
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole("checkbox")).toBeInTheDocument();
